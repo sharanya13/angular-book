@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Login Form in HTML and CSS|Codehal</title>
+        <link rel="stylesheet" href="Admin.component.css">
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <form action="post">
+                <h1> Login</h1>
+                <div class="input-box">
+                    <input type="text" placeholder="Name" required #name>
+                </div>
+                <div class="input-box">
+                    <input type="text" placeholder="storecode" required #storecode>
+                </div>
+                <div class="input-box">
+                    <input type="text" placeholder="Username" required #username>
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Password" required #password>
+                </div>
+                <input type="button" class="btn" value="SignUp" (click)="onclick(name.value,storecode.value,username.value,password.value)">
+            </form>
+        </div>
+    </body>
+</html>

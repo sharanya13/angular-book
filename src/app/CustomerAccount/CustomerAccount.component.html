@@ -1,0 +1,149 @@
+<html>
+<style>
+/* Style the container */
+div {
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+ 
+
+/* Style the form */
+form {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+ 
+
+/* Style the labels */
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+ 
+
+/* Style the input fields */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+ 
+
+/* Style the submit button */
+button[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+ 
+
+/* Add hover effect to the submit button */
+button[type="submit"]:hover {
+  background-color: #555;
+}
+/* Edit button styles */
+        .edit-button {
+            background-color: #ffc107;
+            color: #333;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 16px;
+            line-height: 16px;
+            text-align: center;
+            padding: 0;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+</style>
+<!-- app.component.html -->
+<body>
+<h1>My Profile</h1>
+<!---->
+<div>
+  <table *ngFor = "let customer of customersList">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+    <tr>
+      <td>{{customer.username}}</td>
+      <td>{{customer.email}}</td>
+  </tr>
+  </table>
+</div> 
+
+
+
+
+<!--
+
+<div *ngFor="let customer of customersList">
+<form>
+<label for="customerId">Customer ID:</label>
+<input type="text" id="customerId" name="customerId" disabled>{{customer.customerId}}
+
+ 
+
+    <label for="username">Username:</label>
+<input type="text" id="username" name="username" required>{{customer.username}}
+
+ 
+
+    <label for="password">Password:</label>
+<input type="password" id="password" name="password"  required>{{customer.password}}
+
+ 
+
+    <label for="firstName">First Name:</label>
+<input type="text" id="firstName" name="firstName"  required>{{customer.firstName}}
+
+ 
+
+    <label for="lastName">Last Name:</label>
+<input type="text" id="lastName" name="lastName"  required>{{customer.lastName}}
+
+ 
+
+    <label for="email">Email:</label>
+<input type="email" id="email" name="email"  required>{{customer.email}}
+
+ 
+
+    <label for="phone">Phone Number:</label>
+<input type="tel" id="phone" name="phone"  required>{{customer.phone}}
+
+ 
+
+    <label for="pinCode">Pin Code:</label>
+<input type="number" id="pinCode" name="pinCode" required>{{customer.pinCode}}
+
+ 
+
+     
+</form>    
+</div>
+-->
+
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Your Bookstore</title>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        /* Navigation bar styles */
+        .navbar {
+            background-color: #D47C6A;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #fff;
+            margin: 0 20px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Centering container */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+        }
+
+        /* Search bar styles */
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 25px;
+            padding: 5px 10px;
+        }
+
+        .search-input {
+            border: none;
+            outline: none;
+            padding: 5px;
+            width: 700px;
+        }
+
+        .search-button {
+            background-color: #000000;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+
+        /* Icon styles */
+        .icon {
+            font-size: 24px;
+            margin-right: 5px;
+        }
+
+        body {
+            background-color: #FFFAF1; /* Replace with your desired color code */
+      }
+
+div.gallery {
+  border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+} 
+
+.responsive {
+  padding: 0 6px;
+  width: 24.99999%;
+  float: left;
+}
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+ 
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+img:hover {
+  transform: scale(1.1); /* Increase the image size on hover */
+}
+
+.text:hover {
+  color: #007bff; /* Change text color on hover */
+}
+
+/* Add grid-specific styles */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 40px;
+}
+
+.book1 {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.logout{
+  background-color: #D47C6A ;
+  color: #fff;
+  border: none;
+  border-radius: 80px;  
+}
+
+.navbar a.split {
+  float: right;
+  color: white;
+}
+</style>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+<!---->
+<div class="navbar">
+    <div class="container">
+    <a href="CustomerAccount"><i class='bx bx-user' ></i>Account</a>
+    <a href="Booklist"><i class='bx bx-home-alt-2' ></i> Home</a>
+    <div class="search-container">
+    <input type="text" class="search-input" placeholder="Search..." required #search>
+    <button class="search-button" (click)="searching(search.value)">Search</button>
+    </div>
+    <a href="OrdersList"><i class='bx bx-food-menu'></i>Orders</a>
+    <a href="Cart"><i class='bx bx-cart' ></i> Cart</a>
+
+    <button class="logout" (click)="logout()"><a href="Homepage"><h4><i class='bx bx-log-out'></i>Logout</h4></a></button>
+    <br><br>   	
+    </div>
+</div>
+
+<h4 style="text-align:center;font-family:sans-serif;font-size:20px">"A reader lives a thousand lives before he dies. The man who never reads lives only one."</h4>
+
+<div class="book-grid" >
+    <div class="book1" *ngFor = "let b of BooksList">
+        <img alt="" src="{{b.urls}}" width="200" height="200">
+        <h2>{{b.title}}</h2>
+        <p><b>Author : </b>{{b.authorid.authorname}}</p> 
+        <p><strong>Price : </strong><i class='bx bx-rupee' ></i>{{b.price}}</p>
+        <div *ngIf ="b.discount; then trueblock"></div>
+        <ng-template #trueblock>
+        <p><b>Discount : </b>{{b.discount}}%</p>
+        </ng-template>
+        <button class="search-button" (click)="addtocart(b.bookid,1)">Add to cart</button>
+    </div>
+</div>
+ 
+<div class="clearfix"></div>
+
+<div style="padding:6px;">
+<p style="text-align:center;font-family:sans-serif;font-size:20px">Your One Way Destination for all books.</p>
+</div>
+
+ 
+
+</body>
+</html>
+
+
+
+ 
+
+
+

@@ -1,0 +1,38 @@
+<table align="center" width="50%" border="1" bgcolor="lightblue">
+
+    <caption>Authors Details</caption>
+
+    <tr>
+
+        <th>Id</th>
+
+        <th> Name</th>
+
+        <th>Country</th>
+
+        <th>Email </th>
+
+        <th>PhoneNumber  </th>
+
+        <th>Created_date  </th>
+
+    </tr>
+
+    <tr *ngFor ="let t of authorsList">
+
+        <td>{{t.authorid}}</td>
+
+        <td>{{t.authorname}}</td>
+
+        <td>{{t.country}}</td>
+
+        <td> {{t.email}}</td>
+
+        <td>{{t.phonenumber}}</td>
+
+        <td>{{t.createdat}}</td>
+    </tr>
+
+
+</table>
+

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+    <style>
+
+.navbar {
+            background-color: #D47C6A;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #fff;
+            margin: 0 20px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Centering container */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+        }
+
+        /* Search bar styles */
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 25px;
+            padding: 5px 10px;
+        }
+
+        .search-input {
+            border: none;
+            outline: none;
+            padding: 5px;
+            width: 700px;
+        }
+
+        .search-button {
+            background-color: #000000;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+
+        /* Icon styles */
+        .icon {
+            font-size: 24px;
+            margin-right: 5px;
+        }
+
+        body {
+            background-color: #FFFAF1; /* Replace with your desired color code */
+      }
+
+        div.scroll {
+        background-color:#F9E3C3;
+        width: 98%;
+        height: 80%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align: center;
+        padding: 20px;
+        }
+
+        .product {
+        display: flex;
+        flex-direction: row;
+        padding: 10px;
+        box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        background-color: white;
+        margin: 20px 0px;
+        }
+
+        .center-title {
+        font-size: 1.5rem;
+        color: red;
+        }
+
+        .quantity {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px; /* Add margin to create space below */
+        }
+
+        .quantity-label {
+        margin-right: 10px;
+        }
+        
+        .quantity-buttons {
+        display: flex;
+        align-items: center;
+        }
+        
+        .quantity-button {
+        padding: 5px 10px;
+        background-color: #D47C6A;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 0 5px;
+        }
+
+        .quantity-button:hover {
+        background-color: black;
+        }
+
+        .content 
+        {
+        position: relative;
+        z-index: 1;
+        display:flex;
+        }
+        h3
+        {
+            font-size: 25px;
+            text-align: left;
+        }
+        h2
+        {
+            font-size: 20px;
+            text-align: left;
+        }
+        h1 
+        {
+            top:100%;      
+            font-size: 40px;
+            color: black; 
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            
+        } 
+        .add-to-cart {
+        margin-top: 20px; /* Add margin to create space above */
+        }
+    </style>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+
+<body>
+    <div class="navbar">
+        <div class="container">
+        <a href="#"><i class='bx bx-user' ></i>Account</a>
+        <a href="Booklist"><i class='bx bx-home-alt-2' ></i> Home</a>
+        <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search..." required #search>
+        <button class="search-button" (click)="searching(search.value)">Search</button>
+        </div>
+        <a href="OrdersList"><i class='bx bx-food-menu'></i>Orders</a>
+        <a href="Cart"><i class='bx bx-cart' ></i> Cart</a>
+    
+        <a href="Homepage"><i class='bx bx-log-out'></i> Logout</a>
+        <br><br>   	
+        </div>
+    </div>
+
+    <div *ngIf="length; then trueblock else falseblock"></div>
+        <ng-template #falseblock>
+            <div class="content">
+                <h1>Buying books was a way anyone could acquire a work of art for very little</h1>
+            </div>
+        </ng-template>
+        <ng-template #trueblock>
+            <div id="container">
+                <div id="cart"></div>
+                <div id="product-list">
+                    <div class="scroll">
+                        <div class="product" *ngFor="let c of BooksCartList;let i = index">
+                            <img src="{{c.bookid.urls}}" alt="" width="200" height="200">
+                            <div>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{c.bookid}}</p>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{c.price}}</p>
+                                <div class="quantity">
+                                    <div class="quantity-buttons">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button class="quantity-button" (click)="DecrementQuantity(i,c.bookid,c.price)">-</button>
+                                        <span><input type="text" width="5%" style="width: 22px; height: 20px;" [value]="c.quantity" /></span>
+                                        <button class="quantity-button" (click)="IncrementQuantity(i,c.bookid,c.price)">+</button>
+                                    </div>
+                                </div>                                                                                              
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button class="search-button" (click)="remove(c.bookid.bookid,i)">Remove</button>
+                            </div>
+                        </div>
+                        <div>
+                            <h3><p><b>Total Amount : </b><i class='bx bx-rupee' ></i>{{total}}</p></h3>
+                            <h2><button class="search-button" (click)="makepayment()">Make Payment</button></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+</body>
+</html>

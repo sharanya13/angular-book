@@ -1,0 +1,530 @@
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+<title>Orders</title>
+<style>
+/* Apply basic styling to the body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+ 
+
+/* Style the h1 and h2 headers */
+h1, h2 {
+    color: #333;
+}
+
+ 
+
+/* Style the container for the shopping cart */
+#cart {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+ 
+
+.order-details {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+ 
+
+/* Style the product list container */
+#product-list {
+    background-color: #000000;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s; /* Add transition for smooth hover effect */
+}
+
+ 
+
+/* Style the individual product elements within the list */
+.product {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px; /* Add padding */
+    background-color: #ffffff; /* Add background color */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: background-color 0.3s; /* Add transition for smooth hover effect */
+}
+
+ 
+
+/* Style the product image */
+.product img {
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;
+}
+
+ 
+
+/* Style the product information (name and price) */
+.product p {
+    color: #333;
+    margin: 0;
+}
+/* Apply hover effect to the product element */
+.product:hover {
+    background-color: #f2f2f2; /* Change background color on hover */
+}
+
+ 
+
+ 
+
+/* Style the shipping address and order summary side by side */
+.shipping-order-summary {
+    display: flex;
+}
+
+ 
+
+.shipping-address {
+    flex: 1;
+}
+
+ 
+
+.order-summary {
+    flex: 1;
+}
+</style>
+</head>
+<body>
+
+ 
+
+<h1>My Orders</h1>
+
+ 
+
+<div id="cart">
+<h2>Order Details</h2>
+<div *ngFor="let order of ordersList; let i = index">
+<div class="order-info" style="padding: 10px; background-color: #f2f2f2;">
+    <div *ngIf="i>0 && order.orderid.orderid==ordersList[i-1].orderid.orderid; else falseblock"></div>
+        <ng-template #falseblock class="order-details">
+        <p><b>Order ID:</b> {{ order.orderid.orderid }}</p>
+        <p><b>Ordered Date:</b> {{ order.orderid.ordereddate }}</p>
+        <p><b>Delivery Date:</b> {{ order.orderid.arrivaldate}}</p>
+        </ng-template>
+        <div class="delivery-info" style="padding: 10px; background-color: #e0e0e0;">
+        <img src="{{order.bookid.urls}}" width="200" heigth="150">
+        <p>{{ order.bookprice}}</p>
+        <p>{{ order.quantity}}</p>
+        </div> 
+</div>
+</div>
+</div>
+
+
+</body>
+</html>-->
+
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Orders</title>
+
+    <style>
+
+        /* Apply basic styling to the body */
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            margin: 0;
+
+            padding: 0;
+
+            background-color: #f4f4f4;
+
+        }
+
+ 
+
+        /* Style the h1 and h2 headers */
+
+        h1, h2 {
+
+            color: #333;
+
+        }
+
+ 
+
+        /* Style the container for the shopping cart */
+
+        #cart {
+
+            background-color: #fff;
+
+            padding: 20px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 5px;
+
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+        }
+
+ 
+
+        .order-details {
+            background-color: #f2f2f2;
+           
+
+            border-radius: 5px;
+
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+            padding: 20px;
+
+            margin-bottom: 20px;
+
+        }
+
+ 
+
+        /* Style the product list container */
+
+        #product-list {
+
+            background-color: #000000;
+
+            padding: 20px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 5px;
+
+            margin-top: 20px;
+
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+            transition: background-color 0.3s; /* Add transition for smooth hover effect */
+
+        }
+
+ 
+
+        /* Style the individual product elements within the list */
+
+        .product {
+
+            display: flex;
+
+            align-items: center;
+
+            margin-bottom: 20px;
+
+            padding: 10px; /* Add padding */
+
+            background-color: #ffffff; /* Add background color */
+
+            border: 1px solid #ddd;
+
+            border-radius: 5px;
+
+            transition: background-color 0.3s; /* Add transition for smooth hover effect */
+
+        }
+
+ 
+
+        /* Style the product image */
+
+        .product img {
+
+            width: 200px;
+
+            height: 200px;
+
+            margin-right: 20px;
+
+        }
+
+ 
+
+        /* Style the product information (name and price) */
+
+        .product p {
+
+            color: #333;
+
+            margin: 0;
+
+        }
+
+ 
+
+        /* Apply hover effect to the product element */
+
+        .product:hover {
+
+            background-color: #f2f2f2; /* Change background color on hover */
+
+        }
+
+ 
+
+        /* Style the shipping address and order summary side by side */
+
+        .shipping-order-summary {
+
+            display: flex;
+
+        }
+
+ 
+
+        .shipping-address {
+
+            flex: 1;
+
+        }
+
+ 
+
+        .order-summary {
+
+            flex: 1;
+
+        }
+
+ 
+
+        /* Style book price and quantity side by side */
+
+        .delivery-info {
+
+            display: flex;
+
+            align-items: center;
+
+        }
+
+ 
+
+        .delivery-info img {
+
+            width: 100px;
+
+            height: 100px;
+
+            margin-right: 20px;
+
+        }
+
+        .delivery-details p {
+
+        	 margin: 0;
+
+        }
+        .navbar {
+
+background-color: #D47C6A;
+
+color: #fff;
+
+text-align: center;
+
+padding: 10px 0;
+
+}
+
+
+
+.navbar a {
+
+text-decoration: none;
+
+color: #fff;
+
+margin: 0 20px;
+
+}
+
+
+
+.navbar a:hover {
+
+text-decoration: underline;
+
+}
+
+
+
+/* Centering container */
+
+.container {
+
+display: flex;
+
+justify-content: center;
+
+align-items: center;
+
+height: 80px;
+
+}
+
+
+
+/* Search bar styles */
+
+.search-container {
+
+display: flex;
+
+align-items: center;
+
+background-color: #fff;
+
+border-radius: 25px;
+
+padding: 5px 10px;
+
+}
+
+
+
+.search-input {
+
+border: none;
+
+outline: none;
+
+padding: 5px;
+
+width: 700px;
+
+}
+
+
+
+.search-button {
+
+background-color: #000000;
+
+color: #fff;
+
+border: none;
+
+border-radius: 25px;
+
+padding: 5px 15px;
+
+cursor: pointer;
+
+}
+
+
+
+/* Icon styles */
+
+.icon {
+
+font-size: 24px;
+
+margin-right: 5px;
+
+}
+    </style>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="container">
+        <a href="#"><i class='bx bx-user' ></i>Account</a>
+        <a href="Booklist"><i class='bx bx-home-alt-2' ></i> Home</a>
+        <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search..." required #search>
+        <button class="search-button" (click)="searching(search.value)">Search</button>
+        </div>
+        <a href="OrdersList"><i class='bx bx-food-menu'></i>Orders</a>
+        <a href="Cart"><i class='bx bx-cart' ></i> Cart</a>
+    
+        <a href="Homepage"><i class='bx bx-log-out'></i> Logout</a>
+        <br><br>   	
+        </div>
+    </div>
+
+    <div id="cart">
+
+        <h2>Order Details</h2>
+
+        <div *ngFor="let order of ordersList; let i = index">
+
+            <div class="order-info" style="padding: 10px; background-color: #fff;">
+
+                <div *ngIf="i > 0 && order.orderid.orderid == ordersList[i - 1].orderid.orderid; else falseblock">
+
+                </div>
+
+                <ng-template #falseblock>
+                    <div class="order-details">
+                    <p><b>Order ID:</b> {{ order.orderid.orderid }}</p>
+
+                    <p><b>Ordered Date:</b> {{ order.orderid.ordereddate }}</p>
+
+                    <p><b>Delivery Date:</b> {{ order.orderid.arrivaldate }}</p>
+
+                    <p><b>Total Price:</b> <i class='bx bx-rupee' ></i>{{ order.orderid.paymentid.totalamount }}</p>
+                </div>
+                </ng-template>
+
+                <div class="delivery-info">
+
+                    <img src="{{order.bookid.urls}}" width="200" heigth="150">
+
+                    <div class="delivery-details">
+                    
+                    <p><b>Book Title:</b> {{ order.bookid.title }}</p><br>   
+                    <p><b>Book Price:</b> {{ order.bookprice }}</p><br>                   
+
+                    <p><b>Quantity:</b> {{ order.quantity }}</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
